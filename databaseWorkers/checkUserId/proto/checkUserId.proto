@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package checkUserIdPackage;
+
+
+service checkUserIdService {
+    rpc checkUserId (checkUserIdRequest) returns (checkUserIdResponse);
+};
+
+
+message checkUserIdRequest {
+    string email = 1;
+};
+
+
+message checkUserIdResponse {
+    string isAvailableEmail = 1;
+};
