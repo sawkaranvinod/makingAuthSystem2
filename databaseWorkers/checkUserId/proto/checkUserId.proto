@@ -14,5 +14,5 @@ message checkUserIdRequest {
 
 
 message checkUserIdResponse {
-    string isAvailableEmail = 1;
+    string available = 1;
 };

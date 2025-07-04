@@ -20,7 +20,7 @@ async function handleCheckUserId(req, reply) {
       return reply.status(501).send({ message: "internal server error" ,available:false});
     }
     await reserveData.set(`reserveId:${email}`,`${ipAddress}`);
-    response.available = true;
+    response.message = "email is available";
     return reply.status(200).send(response);
   } catch (error) {
     console.log("error in the controller", error);

@@ -46,6 +46,11 @@ const userSchema = new mongoose.Schema(
         loginDetails:{
             type: mongoose.Schema.Types.ObjectId,
             ref:"LoginDetails"
+        },
+        dateOfBirth:{
+            type: String,
+            trim:true,
+            lowercase:true,
         }
     },
     {
@@ -53,5 +58,6 @@ const userSchema = new mongoose.Schema(
     }
 );
 
+// userSchema.index({ email: 1 });
 
 export const User = mongoose.model("User",userSchema)
