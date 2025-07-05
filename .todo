@@ -8,5 +8,5 @@
 - [ ] update DOB
 - [ ] recovery detail ops
 - [ ] profile photo and name ops
-- [ ] forgotpassword
-- [ ] verify ForgotPassword
+- [x] forgotpassword
+- [x] verify ForgotPassword
