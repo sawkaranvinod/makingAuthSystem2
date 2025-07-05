@@ -3,8 +3,8 @@
 - [x] checkUserId
 - [x] register
 - [x] verifyOtpRegister
-- [ ] Login
-- [ ] verifyOtp
+- [x] Login
+- [x] verifyOtp
 - [ ] update DOB
 - [ ] recovery detail ops
 - [ ] profile photo and name ops

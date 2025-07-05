@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema(
         dateOfBirth:{
             type: String,
             trim:true,
+        },
+        bannedInCountry:{
+            type:[String],
+            default:null,
         }
     },
     {
