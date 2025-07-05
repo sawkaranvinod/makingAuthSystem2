@@ -1,7 +1,7 @@
 import {sanatizeInput} from "../helper/sanatizeInput.helper.js"
 export function verifyOtpRegisterMiddleware(req,reply,done) {
     try {
-        if (!req.body || typeof Object.keys(req.body) !== "object" || Object.keys(req.body).length === 0 ) {
+        if (!req.body || typeof req.body !== "object" || Object.keys(req.body).length === 0 ) {
             return reply.send({message:"data is not complete"}).status(400);
         };
         const data = req.body;
