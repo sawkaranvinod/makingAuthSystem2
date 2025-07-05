@@ -16,19 +16,10 @@ const userSchema = new mongoose.Schema(
             lowercase:true,
             trim:true,
         },
-        hashedPhoneNo:{
-            type:String,
-        },
-        hashKeyVersion:{
-            type:Number,
-        },
         recoveryEmail:{
             type:String,
             trim:true,
             lowercase:true,
-        },
-        hashedRecoveryPhoneNo:{
-            type:String,
         },
         accountBasedOn:{
             type:String,
@@ -41,16 +32,17 @@ const userSchema = new mongoose.Schema(
             type:String,
         },
         byPassKey:{
-            type:["String"]
+            type:["String"],
+            default:null,
         },
         loginDetails:{
             type: mongoose.Schema.Types.ObjectId,
-            ref:"LoginDetails"
+            ref:"LoginDetails",
+            required:true,
         },
         dateOfBirth:{
             type: String,
             trim:true,
-            lowercase:true,
         }
     },
     {

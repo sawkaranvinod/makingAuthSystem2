@@ -4,8 +4,8 @@ export function registerMiddleware(request,reply,done) {
         if (!request.body || typeof request.body !== "object" || !Object.keys(request.body).length ) {
             return reply.send({message:"body is empty"});
         };
-        const {name,email,password} = request.body;
-        if (!name || !email || !password) {
+        const {name,email,password,deviceFingerPrint} = request.body;
+        if (!name || !email || !password || !deviceFingerPrint) {
             return reply.send({message:"data is not complete"});
         };
         const data = {
@@ -13,6 +13,8 @@ export function registerMiddleware(request,reply,done) {
             email: sanatizeInput(email),
             password: sanatizeInput(password),
             ipAddress: request.ip,
+            deviceFingerPrint: deviceFingerPrint,
+            
         };
         if (!data.name || !data.email || !data.password) {
             return reply.send({message:"data is not complete"});

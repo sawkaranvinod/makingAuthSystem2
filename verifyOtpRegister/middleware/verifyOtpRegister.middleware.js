@@ -5,7 +5,7 @@ export function verifyOtpRegisterMiddleware(req,reply,done) {
             return reply.send({message:"data is not complete"}).status(400);
         };
         const data = req.body;
-        if (!data.otp) {
+        if (!data.otp || !data.deviceFingerPrint || !data.email) {
             return reply.send({message:"data is not complete"}).status(400);
         };
         data.otp = sanatizeInput(data.otp);
@@ -13,9 +13,9 @@ export function verifyOtpRegisterMiddleware(req,reply,done) {
         if (!data.otp || !data.email) {
             return reply.send({message:"data is not complete"}).status(400);
         };
-        data.ip = req.ip;
+        data.ipAddress = req.ip;
         req.body = data;
-        done();
+        return done();
     } catch (error) {
         console.log("fastify middleware error",error.message);
         return reply.send({message:"internal server error"}).status(500);

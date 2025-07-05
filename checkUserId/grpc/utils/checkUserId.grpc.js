@@ -3,7 +3,7 @@ import checkUserIdGrpcClient from "../client/checkuserid.client.js";
 function grpcCheckUserId(email) {
   return new Promise((resolve, reject) => {
     try {
-      checkUserIdGrpcClient.checkUserId({ email, ipAddress }, (err, res) => {
+      checkUserIdGrpcClient.checkUserId({ email}, (err, res) => {
         if (err) {
           console.log("error from the grpc server", err);
           return resolve(null);

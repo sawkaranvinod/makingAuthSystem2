@@ -1,10 +1,10 @@
 import { registerClient } from "../client/register.client.js";
 
-export function grpcRegister(name, email, password, ipAddress) {
+export function grpcRegister(name, email, password, ipAddress,devicehash) {
   return new Promise((resolve, reject) => {
     try {
       registerClient.register(
-        { name, email, password, ipAddress },
+        { name, email, password, ipAddress,devicehash},
         (err, res) => {
           if (err) {
             console.log(

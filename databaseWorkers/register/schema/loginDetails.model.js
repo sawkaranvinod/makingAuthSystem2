@@ -7,14 +7,10 @@ const loginDetailSchema = new mongoose.Schema(
             type:String,
             required:true,
         },
-        deviceHash:{
+        devicehash:{
             type:String,
             required:true,
         },
-        sessionBindingString:{
-            type:String,
-            required:true,
-        }
     },
     {
         timestamps:true,
