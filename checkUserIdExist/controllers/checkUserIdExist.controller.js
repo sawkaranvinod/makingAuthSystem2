@@ -5,8 +5,6 @@ export async function handleCheckUserIdExist(req, reply) {
   try {
     const data = req.body;
     const { email, devicehash, ipAddress } = data;
-
-    // Check with gRPC service
     const grpcResponse = await grpcCheckUserId(email);
     if (!grpcResponse || !grpcResponse.avilable) {
       return reply

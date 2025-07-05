@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package loginPackage;
+
+service loginService {
+    rpc login (loginRequest) returns (loginResponse);
+};
+
+message loginRequest {
+    string email = 1;
+    string password = 2;
+};
+
+message loginResponse {
+    bool passMatched = 1;
+}
