@@ -9,7 +9,10 @@ async function handleCheckUserId(req, reply) {
     const availableInreserve = await reserveData.get(`reserveId:${email}`);
 
     if (availableInreserve) {
-      return response.status(200).send({message:"this emailId is already used",available:false});
+      return reply.status(200).send({message:"this emailId is already used",available:false});
+    }
+    if (availableInreserve === String(ipAddress)) {
+      return reply
     }
     const availableInHotData = await hotData.get(`data:${email}`);
     if (availableInHotData) {
@@ -19,8 +22,8 @@ async function handleCheckUserId(req, reply) {
     if (!response) {
       return reply.status(501).send({ message: "internal server error" ,available:false});
     }
-    await reserveData.set(`reserveId:${email}`,`${ipAddress}`);
-    response.message = "email is available";
+    await reserveData.set(`reserveId:${email}`,`${ipAddress}`,"EX",900);
+    reply.message = "email is available";
     return reply.status(200).send(response);
   } catch (error) {
     console.log("error in the controller", error);
