@@ -16,7 +16,7 @@ export async function handleRegister(request,reply) {
         };
         data.otp = otp;
         await redisReserveUserData.set(
-            `reserver:${data.email}`,
+            `reserve:${data.email}`,
             JSON.stringify(data),
             "EX",
             900

@@ -1,0 +1,12 @@
+# Project TODO
+
+- [x] checkUserId
+- [x] register
+- [x] verifyOtpRegister
+- [ ] Login
+- [ ] verifyOtp
+- [ ] update DOB
+- [ ] recovery detail ops
+- [ ] profile photo and name ops
+- [ ] forgotpassword
+- [ ] verify ForgotPassword
