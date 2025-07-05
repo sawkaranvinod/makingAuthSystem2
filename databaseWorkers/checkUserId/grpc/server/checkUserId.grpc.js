@@ -2,7 +2,7 @@ import grpc from "@grpc/grpc-js";
 import protoLoader from "@grpc/proto-loader";
 import { fileURLToPath } from "url";
 import path from "path";
-import { services } from "../function/checkUserId.services.js";
+import { services } from "../services/checkUserId.services.js";
 import { config } from "dotenv";
 config();
 

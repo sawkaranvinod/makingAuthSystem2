@@ -14,5 +14,5 @@ message checkUserIdRequest {
 
 
 message checkUserIdResponse {
-    string available = 1;
+    bool available = 1;
 };

@@ -1,19 +1,23 @@
 import checkBodySchema from "../helper/checkBodySchema.helper.js";
 
-async function checkUserIdMiddleware(req, reply) {
+function checkUserIdMiddleware(req, reply,done) {
   try {
-    if (!Object.keys(req.body).length) {
-      return reply.status(401).send({ message: "enter details",available:false});
+    if (!req.body || typeof req.body !== "object" || !Object.keys(req.body).length) {
+      return reply.status(400).send({ message: "Enter details", available: false });
     }
+
     const data = checkBodySchema(req.body);
-    const ipAddress = req.ip;
-    if (!data) {
-      return reply.status(401).send({ message: "enter email" ,available:false});
+    if (!data || !data.email) {
+      return reply.status(400).send({ message: "Enter a valid email", available: false });
     }
-    data.ipAddress = ipAddress;
+
+    data.ipAddress = req.ip;
     req.body = data;
+    
+    done();
   } catch (error) {
-    return reply.status(501).send({ message: "internal server error", available:false });
+    console.log("Error in checkUserIdMiddleware:", error);
+    return reply.status(500).send({ message: "Internal server error", available: false });
   }
 }
 

@@ -1,10 +1,9 @@
 import Fastify from "fastify";
 import { config } from "dotenv";
 import masterRouter from "./routes/master.route.js";
-//degbug
 config();
 const app = Fastify();
-const port = process.env.EXPRESS_CHECK_USERID_PORT || 8000;
+const port = process.env.FASTIFY_CHECK_USERID_PORT || 8000;
 
 app.register(masterRouter, { prefix: "/" });
 

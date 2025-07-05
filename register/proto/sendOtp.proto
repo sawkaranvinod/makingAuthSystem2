@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package sendOtpPackage;
+
+
+service sendOtpService {
+    rpc sendOtp (sendOtpRequest) returns (sendOtpResponse);
+};
+
+message sendOtpRequest {
+    string from = 1;
+    string to = 2;
+    string subject = 3;
+    string data = 4;
+};
+
+message sendOtpResponse {
+    bool sent = 1;
+}

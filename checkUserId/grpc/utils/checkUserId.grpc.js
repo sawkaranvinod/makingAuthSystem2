@@ -12,7 +12,7 @@ function grpcCheckUserId(email) {
       });
     } catch (error) {
       console.log("error in the grpc utilities", error);
-      resolve(null);
+      return resolve(null);
     }
   });
 }

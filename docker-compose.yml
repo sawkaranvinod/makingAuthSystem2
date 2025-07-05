@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 # this is for development purpose only
 services:
   mongo:
@@ -12,7 +12,17 @@ services:
       MONGO_INITDB_ROOT_USERNAME: karan
       MONGO_INITDB_ROOT_PASSWORD: Kumar1234 # (change here if needed)
     healthcheck:
-      test: ["CMD", "mongo", "--username", "karan", "--password", "Kumar1234", "--eval", "db.adminCommand('ping')"]
+      test:
+        [
+          "CMD",
+          "mongo",
+          "--username",
+          "karan",
+          "--password",
+          "Kumar1234",
+          "--eval",
+          "db.adminCommand('ping')",
+        ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -38,6 +48,27 @@ services:
     volumes:
       - redis-data:/data
 
+  redpanda:
+    image: redpandadata/redpanda:latest
+    container_name: redpanda
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp=1
+      - --memory=1G
+      - --reserve-memory=0M
+      - --node-id=0
+      - --check=false
+      - --kafka-addr=PLAINTEXT://0.0.0.0:9092
+      - --advertise-kafka-addr=PLAINTEXT://localhost:9092
+    ports:
+      - "9092:9092"
+      - "9644:9644"
+    volumes:
+      - redpanda-data:/var/lib/redpanda/data
+
 volumes:
   mongo-data:
   redis-data:
+  redpanda-data:
