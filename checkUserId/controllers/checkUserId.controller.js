@@ -1,5 +1,5 @@
 import grpcCheckUserId from "../grpc/utils/checkUserId.grpc.js";
-import { hotData, reserveData } from "../config/redis.config.js";
+import {reserveData } from "../config/redis.config.js";
 
 async function handleCheckUserId(req, reply) {
   try {
@@ -19,12 +19,6 @@ async function handleCheckUserId(req, reply) {
       }
       return reply.status(200).send({ message: "this emailId is already used", available: false });
     }
-
-    const availableInHotData = await hotData.get(`data:${email}`);
-    if (availableInHotData) {
-      return reply.status(200).send({ message: "this email is already in use", available: false });
-    }
-
     const grpcResponse = await grpcCheckUserId(email);
     if (!grpcResponse) {
       return reply.status(501).send({ message: "internal server error", available: false });
