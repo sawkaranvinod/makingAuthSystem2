@@ -32,8 +32,8 @@ export async function handleVerifyOtpRegister(req, reply) {
     if (!registerResponse.saved) {
       return reply.status(500).send({ message: "Failed to save user" });
     };
-    const bindingString = Math.floor(Math.random*100000 + 1);
-    const accessToken = await generateToken({bindingString:bindingString},accessTokenKey,"30d");
+    const bindingString = Date.now();
+    const accessToken = await generateToken({bindingString},accessTokenKey,"30d");
     const refreshToken = await generateToken({email,name:data.name,devicehash:data.devicehash,bindingString},refreshTokenKey,"180d");
     return reply.status(200).send({ message: "User registered successfully",accessToken,refreshToken });
   } catch (error) {

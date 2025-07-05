@@ -37,9 +37,10 @@ export async function handleLogin(req,reply) {
             return reply.send({message:"internal server error"}).status(500);
         };
         data.otp = otp;
+        data.ipAddress = req.ip;
         await redisReserveData.set(
             `bind:${email}`,
-            JSON.stringify()
+            JSON.stringify(data)
         );
         return reply.send({message:"otp sent sucessfully for login the database"}).status(200);
     } catch (error) {

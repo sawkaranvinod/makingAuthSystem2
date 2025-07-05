@@ -1,10 +1,10 @@
 import {loginClient} from "../client/login.client.js";
 
 
-export function grpcLogin(email, password) {
+export function grpcSaveLoginDetail(ipAddress, deviceHash) {
         return new Promise((resolve, reject) => {
             try {
-                loginClient.Login({ email, password }, (err, res) => {
+                loginClient.saveLoginDetail({ ipAddress, deviceHash }, (err, res) => {
                     if (err) {
                         return reject(
                             {

@@ -1,3 +1,3 @@
 export function generateOTP() {
-    return Math.ceil(Math.random*100000 + 1);
+    return Math.ceil(Math.random*1000000 + 1);
 }

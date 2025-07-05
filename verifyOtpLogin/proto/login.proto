@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package loginPackage;
+
+service loginService {
+    rpc login (loginRequest) returns (loginResponse);
+    rpc saveLoginDetail (saveLoginDetailRequest) returns (saveLoginDetailResponse);
+};
+
+message loginRequest {
+    string email = 1;
+    string password = 2;
+};
+
+message loginResponse {
+    bool passMatched = 1;
+};
+
+message saveLoginDetailRequest {
+    string ipAddress = 1;
+    string devicehash = 2;
+};
+
+message saveLoginDetailResponse {
+    bool saved = 1;
+}
