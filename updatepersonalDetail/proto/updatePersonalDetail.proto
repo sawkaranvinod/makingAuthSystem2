@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package updatePersonalDetailPackage;
+
+
+service updatePersonalDetailService {
+    rpc updateName (updateNameRequest) returns (updateNameResponse);
+    rpc updateDob (updateDobRequest) returns (updateDobResponse);
+};
+
+message updateNameRequest {
+    string email = 1;
+    string name = 2;
+};
+
+message updateNameResponse {
+    bool updated = 1;
+};
+
+message updateDobRequest {
+    string email = 1;
+    string dob = 2;
+};
+
+message updateDobResponse {
+    bool updated = 1;
+};

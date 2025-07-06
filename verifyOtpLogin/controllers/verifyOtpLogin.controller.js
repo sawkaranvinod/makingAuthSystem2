@@ -33,9 +33,8 @@ export async function handleVerifyOtpLogin(req,reply) {
         if (!Object.keys(saveData).length || !saveData.saved ) {
             return reply.send({message:"internal server error"}).status(500);
         };
-        const bindingString = Date.now();
-        const accessToken = await generateToken({bindingString},accessTokenKey,"30d");
-        const refreshToken = await generateToken({email,name:data.name,bindingString,devicehash:data.devicehash});
+        const accessToken = await generateToken({devicehash:data.devicehash},accessTokenKey,"30d");
+        const refreshToken = await generateToken({email,name:data.name,devicehash:data.devicehash});
         return reply.send({message:"user login sucessfully",accessToken,refreshToken,name:data.name}).status(200);
     } catch (error) {
         console.log("error in the controller of the verify otp login controller",error.message);
