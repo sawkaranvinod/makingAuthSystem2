@@ -11,7 +11,7 @@ export function registerMiddleware(request,reply,done) {
         const data = {
             name: sanatizeInput(name),
             email: sanatizeInput(email),
-            password: sanatizeInput(password),
+            password: password.trim(),
             ipAddress: request.ip,
             deviceFingerPrint: deviceFingerPrint,
             

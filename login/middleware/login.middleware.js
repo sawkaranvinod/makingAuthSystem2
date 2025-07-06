@@ -20,7 +20,7 @@ export function loginMiddleware(req, res, done) {
         }
         const data = {
             email: email,
-            password: req.body.password,
+            password: req.body.password.trim(),
             deviceFingerPrint: req.body.deviceFingerPrint,
         };
         req.body = data;
