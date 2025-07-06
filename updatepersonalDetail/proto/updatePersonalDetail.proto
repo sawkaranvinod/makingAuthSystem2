@@ -6,6 +6,7 @@ package updatePersonalDetailPackage;
 service updatePersonalDetailService {
     rpc updateName (updateNameRequest) returns (updateNameResponse);
     rpc updateDob (updateDobRequest) returns (updateDobResponse);
+    rpc updateProfilePhoto (updateProfilePhotoRequest) returns (updateProfilePhotoResponse);
 };
 
 message updateNameRequest {
@@ -23,5 +24,14 @@ message updateDobRequest {
 };
 
 message updateDobResponse {
+    bool updated = 1;
+};
+
+message updateProfilePhotoRequest {
+    string email = 1;
+    string profilePhoto = 2;
+};
+
+message updateProfilePhotoResponse {
     bool updated = 1;
 };
