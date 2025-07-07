@@ -11,5 +11,5 @@ const kafka = new Kafka({
   brokers: [kafkaBrocker],
 });
 
-export const producer = kafka.consumer();
+export const producer = kafka.producer();
 
