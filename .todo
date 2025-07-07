@@ -5,8 +5,8 @@
 - [x] verifyOtpRegister
 - [x] Login
 - [x] verifyOtp
-- [ ] update DOB
-- [ ] recovery detail ops
-- [ ] profile photo and name ops
+- [x] update DOB
+- [x] recovery detail ops
+- [x] profile photo and name ops
 - [x] forgotpassword
 - [x] verify ForgotPassword
